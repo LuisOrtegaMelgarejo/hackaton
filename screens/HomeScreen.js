@@ -82,7 +82,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Horario</Text>
+          <Text style={styles.tabBarInfoText}>Holas</Text>
         </View>
         {this.state.isLoading?loading:data}
       </View>

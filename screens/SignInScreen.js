@@ -7,7 +7,7 @@ import {
   Button,
   TouchableWithoutFeedback,
   Image,
-  Alert,AsyncStorage,ActivityIndicator
+  Alert,AsyncStorage,ActivityIndicator,ImageBackground
 } from 'react-native';
 import { Constants } from 'expo';
 
@@ -80,34 +80,60 @@ export default class SignInScreen extends Component {
       <ActivityIndicator/>
     </View>
     const data =
-    <TouchableWithoutFeedback style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
-      <Text style={styles.loginText}>Iniciar Sesión</Text>
+    <TouchableWithoutFeedback onPress={() => this.onClickListener('login')}>
+      <View style={styles.loginButton}>
+        <Text style={styles.loginText}>INGRESAR</Text>
+      </View>
     </TouchableWithoutFeedback>
     return (
-      <View style={styles.container}>
-        <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 40}}>
-        </View>
-        <View style = {styles.grouped}>
-          <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-            <TextInput style={styles.inputs}
-                placeholder="Usuario"
-                keyboardType="email-address"
-                underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email})}/>
-          </View>
-        
-          <View style={styles.inputContainer}>
-            <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
-            <TextInput style={styles.inputs}
-                placeholder="Contraseña"
-                secureTextEntry={true}
-                underlineColorAndroid='transparent'
-                onChangeText={(password) => this.setState({password})}/>
+      <ImageBackground source={require('../assets/images/loginbg.png')}
+      imageStyle={{resizeMode: 'stretch'}}
+      style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <View style={styles.subcontainer}>
+            <View style={styles.logocontainer}>
+              <Image style={styles.logo} source={require('../assets/images/logo.png')}/>
             </View>
+            <View style={styles.logocontainer2}>
+              <Image style={styles.logo2} source={require('../assets/images/igbutton.png')}/>
+            </View>
+            <Text style={{fontWeight:"bold",color: "#E6E6E6"}}>
+              - O -
+            </Text>
+            <View style = {styles.grouped}>
+              <Text style={{color: "#E6E6E6"}}>
+                Usuario
+              </Text>
+              <View style={styles.inputContainer}>
+                <TextInput style={styles.inputs}
+                    keyboardType="email-address"
+                    underlineColorAndroid='transparent'
+                    onChangeText={(email) => this.setState({email})}/>
+              </View>
+              <Text style={{color: "#E6E6E6"}}>
+                Contraseña
+              </Text>
+              <View style={styles.inputContainer}>
+                <TextInput style={styles.inputs}
+                    secureTextEntry={true}
+                    underlineColorAndroid='transparent'
+                    onChangeText={(password) => this.setState({password})}/>
+              </View>
+
+            </View>
+            <View style={{width: "100%"}}>
+              <Text style={{color: "#E6E6E6", fontSize: 10,textAlign: "right", paddingBottom:15}}>
+                ¿Olvidaste tu usuario o contraseña?
+              </Text>
+              <Text style={{color: "#E6E6E6", fontSize: 10,textAlign: "right", paddingBottom:15}}>
+                ¿No tienes cuenta?
+              </Text>
+            </View>
+            {this.state.isLoading?loading:data}
+          </View>
         </View>
-        {this.state.isLoading?loading:data}
-      </View>
+      </ImageBackground>
+  
     );
   }
 }
@@ -115,17 +141,59 @@ export default class SignInScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2C3B92',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 40,
+    paddingTop: 60,
+  },
+  subcontainer:{
+    width: "100%",
+    height: "100%",
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderBottomColor: '#E6E6E6',
+    borderTopColor: '#E6E6E6',
+    borderRightColor: '#E6E6E6',
+    borderLeftColor: '#E6E6E6',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 40,
+    paddingTop: 40,
+  },
+  logocontainer:{
+    width: "100%",
+    paddingLeft: 60,
+    paddingRight: 60,
+    paddingBottom: 20,
+    paddingTop: 20,
+  },
+  logocontainer2:{
+    width: "100%",
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingTop: 20,
+  },
+  logo:{
+    width: "100%",
+    height: 60,
+    resizeMode: 'stretch'
+  },
+  logo2:{
+    width: "100%",
+    height: 50,
+    resizeMode: 'stretch'
   },
   grouped:{
     padding: 10,
     marginBottom: 10
   },
   inputContainer: {
-      borderBottomColor: '#F5FCFF',
-      backgroundColor: '#2C3B92',
+      borderBottomColor: '#E6E6E6',
       borderBottomWidth: 1,
       width:250,
       height:45,
@@ -136,7 +204,8 @@ const styles = StyleSheet.create({
   inputs:{
       height:45,
       marginLeft:16,
-      borderBottomColor: '#FFFFFF',
+      borderBottomColor: '#E6E6E6',
+      color: '#E6E6E6',
       flex:1,
   },
   inputIcon:{
@@ -145,20 +214,24 @@ const styles = StyleSheet.create({
     marginLeft:15,
     justifyContent: 'center'
   },
-  buttonContainer: {
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-  },
-  loginButton: {
-    backgroundColor: "#2C3B92",
+
+  loginButton:{
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderBottomColor: '#E6E6E6',
+    borderTopColor: '#E6E6E6',
+    borderRightColor: '#E6E6E6',
+    borderLeftColor: '#E6E6E6',
+    padding:20,
+    borderRadius: 25,
+    width: "100%",
+    textAlign: "center"
   },
   loginText: {
-    color: 'white',
+    color: '#E6E6E6',
+    textAlign: "center"
   }
 });
  
