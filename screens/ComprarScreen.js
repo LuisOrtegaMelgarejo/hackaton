@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 
-export default class ListScreen extends React.Component {
+export default class ComprarScreen extends React.Component {
 
   constructor(props){
     super(props);
@@ -99,12 +99,8 @@ export default class ListScreen extends React.Component {
     </View>
     const data =
       <ScrollView>
-        <Text style={{color: "#8F248E", fontSize: 20, paddingBottom: 20}}>Excelente Adriana</Text>
-        <Text>Ahora verás los productos que detectamos y tenemos disponibles para ti</Text>
-        <View style={{width: "100%", paddingTop: 20,paddingBottom: 20, alignItems: "center"}}>
-          <Image style={{width: 150,height: 180,resizeMode:'stretch'}}
-                source={{uri: "https://i.pinimg.com/564x/6e/73/a2/6e73a281068289656d1783d2cb2ad13e.jpg"}}/>
-        </View> 
+        <Text style={{color: "#8F248E", fontSize: 20, paddingBottom: 20}}>Te falta poco!</Text>
+        <Text>Estas a un paso de obtener lo que deseas!</Text>
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
@@ -113,6 +109,8 @@ export default class ListScreen extends React.Component {
               <Text>{item.Descripcion}</Text>
               <View style={{height: 30,width: "100%"}}>
                 <View style={{flex: 1,flexDirection:"row",justifyContent: 'space-between'}}>
+                <Image style={{width: 150,height: 180,resizeMode:'stretch'}}
+                source={require('../assets/images/check.png')}/>
                   <Text>{item.Precio}</Text>
                   <Text>Cyzone</Text>
                   <Text>{item.CUV}</Text>

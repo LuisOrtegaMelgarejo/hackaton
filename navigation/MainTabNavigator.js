@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import PedidosScreen from '../screens/PedidosScreen';
 import ListScreen from '../screens/ListScreen';
+import ComprarScreen from '../screens/ComprarScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -44,7 +45,26 @@ PedidosStack.navigationOptions = {
   ),
 };
 
+const ComprarStack = createStackNavigator({
+  Home: ComprarScreen
+});
+
+ComprarStack.navigationOptions = {
+  tabBarLabel: 'Principal',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
-  PedidosStack
+  PedidosStack,
+  ComprarStack
 });

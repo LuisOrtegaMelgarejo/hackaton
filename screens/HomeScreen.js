@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   imgrigth:{
     width: 80,
-    height: 30,
+    height: 45,
     resizeMode: 'stretch'
   },
   imgleft:{
