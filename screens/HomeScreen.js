@@ -62,127 +62,168 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    const loading =
-    <View style={{flex: 1, paddingTop: 30}}>
-      <ActivityIndicator/>
-    </View>
-    const data =
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}
-      refreshControl={
-        <RefreshControl
-          refreshing={this.state.refreshing}
-          onRefresh={this._onRefresh}
-        />
-      }>
-      <View style={{flex: 1}}>
-     
-      </View>
-    </ScrollView>
+
       
     return (
-      <View style={styles.container}>
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Holas</Text>
+        <View style={styles.container}>
+          <View style = {{paddingBottom:22}}>
+            <Text style={{fontWeight:"bold",color: "#8F248E",fontSize:26,textAlign:"left"}}>
+              Bienvenida Adriana!
+            </Text>
+          </View>
+          <View style = {{paddingBottom:22}}>
+            <Text style={{fontSize:16}}>
+              ¿Te gusta el maquillaje de tu artista o influencer favorito?
+              
+            </Text>
+          </View>
+          <View style={{paddingTop:15}}>
+            <Text style={{fontSize:16}}>
+              Ahora podrás conseguirlo en 3 pasos! <Image style={styles.heart} source={require('../assets/images/heart.png')}/>
+            </Text>
+          </View>
+
+          <View style={styles.container_img}>
+            <View style={styles.RectangleShapeView}>
+
+                <Image style={styles.upload} source={require('../assets/images/upload.png')}/>
+                <Text style={{fontSize:16}}>Sube la foto del influencer</Text>
+                <Text style={{fontSize:16}}>desde tu galería</Text>
+
+            </View>
+          
+          </View>
+
+          <View style={styles.container}>
+              <Image style={styles.upload_ig} source={require('../assets/images/ig-button-upload.png')}/>
+          
+          </View>
+
+
+            
+
         </View>
-        {this.state.isLoading?loading:data}
-      </View>
+  
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    //flex: 1,
+    //alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 40,
+    paddingTop: 60,
   },
-  semanas:{
-    borderBottomWidth: 2,
-    borderBottomColor: '#2C3B92',
+  heart:{
+    width: 22,
+    height: 20,
+    //resizeMode: 'stretch'
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 0,
-  },
-  welcomeContainer: {
+  container_img:{
+    //flex: 1,
+    marginTop: 35,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    textAlign:"center",
+    borderColor: '#A9A9A9',
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    width: 310,
+    height: 200,
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
+  RectangleShapeView: {
+    //marginTop: 20,
+    borderStyle: 'solid',
+    borderColor: "#CCCCCC",
+    justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 50,
+    textAlign:"center",
   },
-  homeScreenFilename: {
-    marginVertical: 7,
+  upload:{
+    width: 50,
+    height: 40,
+    marginBottom: 10
   },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
+  upload_ig:{
+    width: 280,
+    height: 40,
   },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#2C3B92',
-    paddingTop: 40,
+  logoview1:{
+    width: "100%",
+    paddingLeft: 60,
+    paddingRight: 60,
     paddingBottom: 20,
+    paddingTop: 20,
   },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'white',
-    textAlign: 'left',
+  logocontainer2:{
+    width: "100%",
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingTop: 20,
   },
-  semanaText: {
-    color: 'black',
-    textAlign: 'center',
-    paddingVertical: 10,
-    fontSize: 15
+  logo:{
+    //width: "100%",
+    width: 130,
+    height: 50,
+    //resizeMode: 'stretch'
   },
-  navigationFilename: {
-    marginTop: 5,
+  icon_person:{
+    //width: "100%",
+    width: 50,
+    height: 50,
+    //resizeMode: 'stretch'
   },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
+  logo2:{
+    width: "100%",
+    height: 50,
+    resizeMode: 'stretch'
   },
-  helpLink: {
-    paddingVertical: 15,
+  grouped:{
+    marginBottom: 10
   },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
+  inputContainer: {
+      width:250,
+      height:45,
+      marginBottom:20,
+      flexDirection: 'row',
+      alignItems:'center'
   },
+  inputs:{
+      height:45,
+      marginLeft:16,
+      borderBottomColor: '#E6E6E6',
+      color: '#E6E6E6',
+      flex:1,
+  },
+  inputIcon:{
+    width:30,
+    height:30,
+    marginLeft:15,
+    justifyContent: 'center'
+  },
+
+  loginButton:{
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderBottomColor: '#E6E6E6',
+    borderTopColor: '#E6E6E6',
+    borderRightColor: '#E6E6E6',
+    borderLeftColor: '#E6E6E6',
+    padding:20,
+    borderRadius: 25,
+    width: "100%",
+    textAlign: "center"
+  },
+  loginText: {
+    color: '#E6E6E6',
+    textAlign: "center"
+  }
 });
