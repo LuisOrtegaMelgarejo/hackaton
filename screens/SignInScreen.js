@@ -23,7 +23,17 @@ export default class SignInScreen extends Component {
     }
 
   }
-
+  
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+ 
   onClickListener = (viewId) => {
     if(!this.state.email || !this.state.password){
       return;
@@ -50,23 +60,14 @@ export default class SignInScreen extends Component {
     var scope = this;
     console.log();
     
-    fetch('https://demo2.sigu.pe/alumno/entrarExterno',obj)
-    .then((response) => response.json())
-    .then((responseJson) => {
+    if(this.state.email=="123456" && this.state.password=="123456"){
+      
       this.setState({
         isLoading: false,
-      }, function(){})
-      if(!responseJson.error){
-        AsyncStorage.setItem('userToken',responseJson["auth-token"]);
-        scope.props.navigation.navigate('Main');
-      }
-    })
-    .catch((error) =>{
-      console.error(error);
-      this.setState({
-        isLoading: false,
-      }, function(){})
-    });
+      });
+      AsyncStorage.setItem('userToken',this.makeid(20));
+      scope.props.navigation.navigate('Main');
+    }
     
   }
 
