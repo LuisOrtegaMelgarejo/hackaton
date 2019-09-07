@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   AsyncStorage,
   View, FlatList,ActivityIndicator,Alert,
-  RefreshControl
+  RefreshControl,TouchableWithoutFeedback
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
@@ -50,10 +50,10 @@ export default class HomeScreen extends React.Component {
     this.subs.forEach(sub => sub.remove());
   }*/
   
-  goToDetail(data) {
+  goToDetail() {
     this.props.navigation.navigate(
-      'Detail',
-      {'data': data},
+      'ListDetected',
+      {'data': []},
     );
   }
 
@@ -66,6 +66,19 @@ export default class HomeScreen extends React.Component {
       
     return (
         <View style={styles.container}>
+          <View style={styles.header}>
+            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Image style={styles.imgrigth} source={require('../assets/images/blacklogo.png')}/>
+              <Image style={styles.imgleft} source={require('../assets/images/profile-icon.png')}/>
+            </View>
+          </View>  
+          <View style={styles.header2}>
+            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Image style={styles.imgmed} source={require('../assets/images/step1-on.png')}/>
+              <Image style={styles.imgmed} source={require('../assets/images/step2-off.png')}/>
+              <Image style={styles.imgmed} source={require('../assets/images/step2-off.png')}/>
+            </View>
+          </View>  
           <View style = {{paddingBottom:22}}>
             <Text style={{fontWeight:"bold",color: "#8F248E",fontSize:26,textAlign:"left"}}>
               Bienvenida Adriana!
@@ -98,10 +111,11 @@ export default class HomeScreen extends React.Component {
               <Image style={styles.upload_ig} source={require('../assets/images/ig-button-upload.png')}/>
           </View>
 
-          <View style={styles.container_sgte}>
-          <Text style={{fontWeight:"bold",color: "#8F248E",fontSize:16,textAlign:"right",marginTop:20,marginRight:10}}>Siguiente</Text>
-          </View>
-
+          <TouchableWithoutFeedback onPress={() => this.goToDetail()}>
+            <View style={styles.container_sgte}>
+            <Text style={{fontWeight:"bold",color: "#8F248E",fontSize:16,textAlign:"right",marginTop:20,marginRight:10}}>Siguiente</Text>
+            </View>
+          </TouchableWithoutFeedback>
             
 
         </View>
@@ -117,11 +131,38 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 40,
-    paddingTop: 60,
+    paddingTop: 40,
   },
   container_btn_ig:{
     marginTop: 30,
     alignItems: 'center'
+  },
+  header: {
+    width: "100%",
+    height: 30
+  },
+  header2:{
+    width: "100%",
+    height: 110,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 30,
+    paddingTop: 40,
+  },
+  imgrigth:{
+    width: 80,
+    height: 30,
+    resizeMode: 'stretch'
+  },
+  imgleft:{
+    width: 30,
+    height: 30,
+    resizeMode: 'stretch'
+  },
+  imgmed:{
+    width: 40,
+    height: 40,
+    resizeMode: 'stretch'
   },
   heart:{
     width: 22,

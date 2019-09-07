@@ -24,14 +24,8 @@ export default class SignInScreen extends Component {
 
   }
   
-  makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
+  makeid() {
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNyIjoiYXBwUE9DIiwiaWF0IjoxNTY3ODMwNzAxLCJleHAiOjE1Njc5MTcxMDF9.1i6ED11OqScMQeiysXUzzbnFeEbOx3HcW2qIeDEBC-U";
  }
  
   onClickListener = (viewId) => {
@@ -65,7 +59,7 @@ export default class SignInScreen extends Component {
       this.setState({
         isLoading: false,
       });
-      AsyncStorage.setItem('userToken',this.makeid(20));
+      AsyncStorage.setItem('userToken',this.makeid());
       scope.props.navigation.navigate('Main');
     }
     
