@@ -94,11 +94,13 @@ export default class HomeScreen extends React.Component {
           
           </View>
 
-          <View style={styles.container}>
+          <View style={styles.container_btn_ig}>
               <Image style={styles.upload_ig} source={require('../assets/images/ig-button-upload.png')}/>
-          
           </View>
 
+          <View style={styles.container_sgte}>
+          <Text style={{fontWeight:"bold",color: "#8F248E",fontSize:16,textAlign:"right",marginTop:20,marginRight:10}}>Siguiente</Text>
+          </View>
 
             
 
@@ -116,6 +118,10 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 40,
     paddingTop: 60,
+  },
+  container_btn_ig:{
+    marginTop: 30,
+    alignItems: 'center'
   },
   heart:{
     width: 22,
