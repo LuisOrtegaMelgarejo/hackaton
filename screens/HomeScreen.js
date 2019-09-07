@@ -76,7 +76,7 @@ export default class HomeScreen extends React.Component {
             <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between'}}>
               <Image style={styles.imgmed} source={require('../assets/images/step1-on.png')}/>
               <Image style={styles.imgmed} source={require('../assets/images/step2-off.png')}/>
-              <Image style={styles.imgmed} source={require('../assets/images/step2-off.png')}/>
+              <Image style={styles.imgmed} source={require('../assets/images/step3-off.png')}/>
             </View>
           </View>  
           <View style = {{paddingBottom:22}}>

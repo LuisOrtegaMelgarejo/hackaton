@@ -10,11 +10,12 @@ import ComprarScreen from '../screens/ComprarScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  ListDetected: ListScreen
+  ListDetected: ListScreen,
+  Comprar: ComprarScreen
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Principal',
+  tabBarLabel: 'Core',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -32,25 +33,7 @@ const PedidosStack = createStackNavigator({
 });
 
 PedidosStack.navigationOptions = {
-  tabBarLabel: 'Principal',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-const ComprarStack = createStackNavigator({
-  Home: ComprarScreen
-});
-
-ComprarStack.navigationOptions = {
-  tabBarLabel: 'Principal',
+  tabBarLabel: 'Perfil',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -65,6 +48,5 @@ ComprarStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  PedidosStack,
-  ComprarStack
+  PedidosStack
 });

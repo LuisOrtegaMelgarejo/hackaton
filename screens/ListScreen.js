@@ -7,7 +7,7 @@ import {
   Text,
   View,ActivityIndicator,
   FlatList,
-  AsyncStorage
+  AsyncStorage,TouchableWithoutFeedback
 } from 'react-native';
 
 
@@ -83,6 +83,14 @@ export default class ListScreen extends React.Component {
     });
   }
 
+  _keyExtractor = (item, index) => item.CUV;
+  
+  goToDetail() {
+    this.props.navigation.navigate(
+      'Comprar',
+      {'data': this.state.dataSource},
+    );
+  }
 /*  componentWillUnmount() {
     this.subs.forEach(sub => sub.remove());
   }*/
@@ -98,7 +106,7 @@ export default class ListScreen extends React.Component {
       <ActivityIndicator/>
     </View>
     const data =
-      <ScrollView>
+      <ScrollView style={{paddingLeft: 20,paddingRight: 20}}>
         <Text style={{color: "#8F248E", fontSize: 20, paddingBottom: 20}}>Excelente Adriana</Text>
         <Text>Ahora verás los productos que detectamos y tenemos disponibles para ti</Text>
         <View style={{width: "100%", paddingTop: 20,paddingBottom: 20, alignItems: "center"}}>
@@ -106,6 +114,7 @@ export default class ListScreen extends React.Component {
                 source={{uri: "https://i.pinimg.com/564x/6e/73/a2/6e73a281068289656d1783d2cb2ad13e.jpg"}}/>
         </View> 
         <FlatList
+          keyExtractor={this._keyExtractor}
           data={this.state.dataSource}
           renderItem={({item}) => 
           <View style={{paddingLeft: 10,paddingRight: 10,backgroundColor: "#FFF4E0"}}>
@@ -113,7 +122,7 @@ export default class ListScreen extends React.Component {
               <Text>{item.Descripcion}</Text>
               <View style={{height: 30,width: "100%"}}>
                 <View style={{flex: 1,flexDirection:"row",justifyContent: 'space-between'}}>
-                  <Text>{item.Precio}</Text>
+                  <Text>S/. {item.Precio}</Text>
                   <Text>Cyzone</Text>
                   <Text>{item.CUV}</Text>
                 </View>
@@ -142,9 +151,11 @@ export default class ListScreen extends React.Component {
             <View style={{width: "50%",height: 30}}>
               <Text>Atras</Text>
             </View>
-            <View style={{width: "50%",height: 30}}>
-              <Text  style={{color: "#8F248E", fontSize: 20,textAlign: 'right'}}>Lo quiero!</Text>
-            </View>
+            <TouchableWithoutFeedback onPress={() => this.goToDetail()}>
+              <View style={{width: "50%",height: 30}}>
+                <Text  style={{color: "#8F248E", fontSize: 20,textAlign: 'right'}}>Lo quiero!</Text>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
 
@@ -162,7 +173,7 @@ export default class ListScreen extends React.Component {
           <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between'}}>
             <Image style={styles.imgmed} source={require('../assets/images/step1-on.png')}/>
             <Image style={styles.imgmed} source={require('../assets/images/step2-on.png')}/>
-            <Image style={styles.imgmed} source={require('../assets/images/step2-off.png')}/>
+            <Image style={styles.imgmed} source={require('../assets/images/step3-off.png')}/>
           </View>
         </View>  
         {this.state.isLoading?loading:data}
@@ -176,20 +187,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 40,
     paddingTop: 40,
   },
   header: {
     width: "100%",
-    height: 30
+    height: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   header2:{
     width: "100%",
     height: 110,
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingLeft: 50,
+    paddingRight: 50,
     paddingBottom: 30,
     paddingTop: 40,
   },
